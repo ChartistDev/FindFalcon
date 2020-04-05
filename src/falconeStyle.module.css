@@ -1,0 +1,16 @@
+.headingDiv {
+    display: flex;
+    justify-content: center;
+  align-items: center;
+}
+.planetsContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.planetsDiv{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
