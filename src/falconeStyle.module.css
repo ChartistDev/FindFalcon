@@ -5,12 +5,13 @@
 }
 .planetsContainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
 }
 .planetsDiv{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     flex-direction: column;
+    margin: 10px;
 }
