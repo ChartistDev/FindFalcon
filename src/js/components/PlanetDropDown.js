@@ -25,61 +25,6 @@ class PlanetDropDown extends React.Component {
                 }
             </select>
             </div>
-            /*{ <div className = "planetsDiv">
-            <label htmlFor = "planet-select-1">Destination 1</label>
-            <select id = "planet-select-1" onChange = {this.handleChange}>
-                <option key = "Select" value = "Select">Select</option>
-                {
-                    this.state.filteredPlanets.length ? this.state.filteredPlanets.map((planet) => {
-                        return(
-                    <option key = {planet.name} value = {planet.name}>{planet.name}</option>
-                    )
-                    })
-                    : this.state.planets.map((planet) => {
-                        return(
-                    <option key = {planet.name} value = {planet.name}>{planet.name}</option>
-                    )
-                    })
-                }
-            </select>
-            </div>
-            <div className = "planetsDiv">
-            <label htmlFor = "planet-select-1">Destination 1</label>
-            <select id = "planet-select-1" onChange = {this.handleChange}>
-                <option key = "Select" value = "Select">Select</option>
-                {
-                    this.state.filteredPlanets.length ? this.state.filteredPlanets.map((planet) => {
-                        return(
-                    <option key = {planet.name} value = {planet.name}>{planet.name}</option>
-                    )
-                    })
-                    : this.state.planets.map((planet) => {
-                        return(
-                    <option key = {planet.name} value = {planet.name}>{planet.name}</option>
-                    )
-                    })
-                }
-            </select>
-            </div>
-            <div className = "planetsDiv">
-            <label htmlFor = "planet-select-1">Destination 1</label>
-            <select id = "planet-select-1" onChange = {this.handleChange}>
-                <option key = "Select" value = "Select">Select</option>
-                {
-                    this.state.filteredPlanets.length ? this.state.filteredPlanets.map((planet) => {
-                        return(
-                    <option key = {planet.name} value = {planet.name}>{planet.name}</option>
-                    )
-                    })
-                    : this.state.planets.map((planet) => {
-                        return(
-                    <option key = {planet.name} value = {planet.name}>{planet.name}</option>
-                    )
-                    })
-                }
-            </select>
-            </div>
-            </div> }*/
         )
     }
 }
