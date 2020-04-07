@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../../falconeStyle.module.css";
 import { connect } from "react-redux";
 import Planet from "./Planet";
+import { setPlanets } from "../Actions";
 
 class Home extends Component {
   constructor(props) {
@@ -12,16 +13,16 @@ class Home extends Component {
     //   planets: []
     // };
   }
-// componentDidMount(){
-//   const url = "https://findfalcone.herokuapp.com/planets";
-//         fetch(url)
-//           .then(response => response.json())
-//           .then(parsedJSON => this.setState({planets: parsedJSON}))
-//           .catch(error => console.log(error));
-// }
+componentDidMount(){
+  const url = "https://findfalcone.herokuapp.com/planets";
+        fetch(url)
+          .then(response => response.json())
+          .then(parsedJSON => this.props.setPlanets(parsedJSON))
+          .catch(error => console.log(error));
+}
 
   render() {
-    //const {planets} = this.state;
+    const {planets} = this.props;
     return (
       <div>
     <div className = "headingDiv" >
@@ -39,10 +40,16 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   return (
     {
+      planets: state.fetchPlanets.planets,
       heading : state.getHeading.heading
     }
   )
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+      setPlanets : (planets) => dispatch((setPlanets(planets)))
+    }
+}
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
