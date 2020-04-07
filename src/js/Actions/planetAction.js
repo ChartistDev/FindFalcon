@@ -4,10 +4,10 @@ export const getPlanets = () => {
     }
 }
 
-export const setSelectedPlanets = (planets) => {
+export const setSelectedPlanets = (planet) => {
     return {
         type: "SELECTED_PLANETS",
-        payload: planets
+        payload: planet
     }
 }
 

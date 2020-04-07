@@ -13,12 +13,15 @@ class Home extends Component {
     //   planets: []
     // };
   }
-componentDidMount(){
+ async componentDidMount(){
   const url = "https://findfalcone.herokuapp.com/planets";
-        fetch(url)
-          .then(response => response.json())
-          .then(parsedJSON => this.props.setPlanets(parsedJSON))
-          .catch(error => console.log(error));
+      //  fetch(url)
+      //     .then(response => response.json())
+      //     .then(parsedJSON => this.props.setPlanets(parsedJSON))
+      //     .catch(error => console.log(error));
+      const response = await fetch(url);
+      const data = await response.json();
+      this.props.setPlanets(data);
 }
 
   render() {
@@ -30,9 +33,9 @@ componentDidMount(){
         { this.props.heading }
       </h1>
     </div>
-      {/* {
-        planets.length ? <Planet planetsData = {planets}/> : null
-      } */}
+      {
+        <Planet/>
+      }
       </div>
     );
   }
