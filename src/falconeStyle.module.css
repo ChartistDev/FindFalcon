@@ -11,7 +11,13 @@
 .planetsDiv{
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     flex-direction: column;
     margin: 10px;
+}
+.radioDiv {
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
 }
