@@ -2,30 +2,23 @@ import React, { Component } from "react";
 import "../../falconeStyle.module.css";
 import { connect } from "react-redux";
 import Planet from "./Planet";
-import { setPlanets } from "../Actions";
-
+import { setPlanets,setVehicles } from "../Actions";
 class Home extends Component {
   constructor(props) {
     super(props);
-
-    // this.state = {
-    //   heading: "Finding Falcone",
-    //   planets: []
-    // };
   }
  async componentDidMount(){
-  const url = "https://findfalcone.herokuapp.com/planets";
-      //  fetch(url)
-      //     .then(response => response.json())
-      //     .then(parsedJSON => this.props.setPlanets(parsedJSON))
-      //     .catch(error => console.log(error));
-      const response = await fetch(url);
-      const data = await response.json();
-      this.props.setPlanets(data);
+  const urlPlanets = "https://findfalcone.herokuapp.com/planets",
+        urlVehicles = "https://findfalcone.herokuapp.com/vehicles";
+      const responsePlanets = await fetch(urlPlanets);
+      const planetsData = await responsePlanets.json();
+      this.props.setPlanets(planetsData);
+      const responseVehicles = await fetch(urlVehicles);
+      const vehiclesData = await responseVehicles.json();
+      this.props.setVehicles(vehiclesData);
 }
 
   render() {
-    const {planets} = this.props;
     return (
       <div>
     <div className = "headingDiv" >
@@ -50,7 +43,8 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-      setPlanets : (planets) => dispatch((setPlanets(planets)))
+      setPlanets : (planets) => dispatch((setPlanets(planets))),
+      setVehicles : (vehicles) => dispatch(setVehicles(vehicles))
     }
 }
 

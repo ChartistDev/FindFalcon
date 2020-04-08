@@ -1,11 +1,18 @@
 import React from "react";
 import "../../falconeStyle.module.css";
 import {connect} from "react-redux";
-import {setSelectedPlanets} from "../Actions";
+import {setSelectedPlanets, setSelectedVehicles} from "../Actions";
 class PlanetDropDown extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.vehicleChange = this.vehicleChange.bind(this)
+    }
+    vehicleChange(selectedOption) {
+        let selectedVehicle = this.props.vehicles.find((vehicle) => {
+            return vehicle.name === selectedOption.target.value
+        });
+        this.props.setSelectedVehicles(selectedVehicle);
     }
     handleChange (slectedOption) {
         let selected = this.props.planets.find((planet)=> {
@@ -18,6 +25,7 @@ class PlanetDropDown extends React.Component {
         const selectedPlanet = this.props.selectedPlanets.find((planet) => {
             return(planet.selectedBy === this.props.destination)
         });
+        console.log("hello");
         return (
             // <div className = "planetsContainer">
             <div className = "planetsDiv">
@@ -33,22 +41,17 @@ class PlanetDropDown extends React.Component {
                 }
             </select>
             <div className = "radioDiv">
-             <div>   
-            <input type="radio" id="" name="" value=""/> 
-            <label >Hi</label> <br/>
-            </div>
-            <div>
-            <input type="radio" id="" name="" value=""/>
-            <label >Hello</label> <br/>
-            </div>
-            <div>
-            <input type="radio" id="" name="" value=""/>
-            <label >Chakri</label> <br/>
-            </div>
-            <div>
-            <input type="radio" id="" name="" value=""/>
-            <label >Chai</label>
-            </div>
+                {
+                this.props.vehicles.map((vehicle, index) =>{
+                    return (
+                        <div key = {"myVehicleDiv" + index}>   
+                        <input type="radio" id={vehicle.name+this.props.destination} name= {"vehicle"+ this.props.destination} value={vehicle.name} onChange = {this.vehicleChange}/> 
+                        <label>{vehicle.name + "(" + vehicle.total_no + ")"}</label> <br/>
+                        </div>
+                    )
+                })
+             
+                }
             </div>
             </div>
         )
@@ -57,12 +60,14 @@ class PlanetDropDown extends React.Component {
 const mapStateToProps = (state) => {
     return {
         planets: state.fetchPlanets.remainingPlanets,
-        selectedPlanets: state.fetchPlanets.selectedPlanets
+        selectedPlanets: state.fetchPlanets.selectedPlanets,
+        vehicles: state.vehicles.remainingVehicles
     }
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-    planetSelected : (planet) => dispatch(setSelectedPlanets(planet))
+    planetSelected : (planet) => dispatch(setSelectedPlanets(planet)),
+    setSelectedVehicles: (vehicle) => dispatch(setSelectedVehicles(vehicle))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(PlanetDropDown);
