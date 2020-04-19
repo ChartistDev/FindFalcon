@@ -4,9 +4,12 @@ export const setVehicles = (vehicles)=> {
         payload: vehicles
     }
 }
-export const setSelectedVehicles = (vehicle) => {
+export const setSelectedVehicles = (vehicle, destination) => {
     return {
         type: "SET_SELECTED_VEHICLE",
-        payload: vehicle
+        payload: {
+            vehicle,
+            destination
+        }
     }
 }
