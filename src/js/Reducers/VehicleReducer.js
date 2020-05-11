@@ -1,4 +1,5 @@
 const initialState = {
+    TimeTaken: "",
     vehicles : [],
     remainingVehicles: [],
     destinationsHash : { ///Hash for destinations used to build vehicleCounter
@@ -27,7 +28,6 @@ const vehicles = (state = initialState, action)=> {
             }
             let arr = state.vehicles.slice();
             let vehicleCounterObj = findRemainingVehicles(arr,state.vehicleCounter);
-            console.log(vehicleCounterObj);
             return {
                 ...state,
                 remainingVehicles: vehicleCounterObj
@@ -46,7 +46,6 @@ const createVehicleCounter = (vehicles, obj) => {
 }
 const findRemainingVehicles = (remainingObj, selectedVehiclesArr) => {
     let obj = {};
-    console.log(selectedVehiclesArr);
    for(let index = 0;index<remainingObj.length;index++) {
     obj[remainingObj[index].name] = remainingObj[index].total_no;
        for(let i=0;i<selectedVehiclesArr.length;i++) {

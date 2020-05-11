@@ -2,22 +2,28 @@
     display: flex;
     justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 .planetsContainer{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 .planetsDiv{
     display: flex;
-    justify-content: center;
     align-items: left;
-    flex-direction: column;
+    flex-flow: column wrap;
+    width:150px;
+    height:150px;
     margin: 10px;
 }
 .radioDiv {
     display: flex;
     align-items: left;
     justify-content: left;
-    flex-direction: column;
+    flex-flow: wrap;
+}
+.hideDiv {
+    display: none;
 }

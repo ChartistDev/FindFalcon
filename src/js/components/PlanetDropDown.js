@@ -6,20 +6,22 @@ class PlanetDropDown extends React.Component {
     constructor(props) {
         super(props);
         this.handleChange = this.handleChange.bind(this);
+        this.selectedPlanet = undefined;
         this.vehicleChange = this.vehicleChange.bind(this)
         this.getRadios = this.getRadios.bind(this);
     }
     vehicleChange(selectedOption) {
-        console.log(selectedOption.target.value);
         // let selectedVehicle = this.props.vehicles.find((vehicle) => {
         //     return vehicle.name === selectedOption.target.value
         // });
+        console.log(this.selectedPlanet);
         this.props.setSelectedVehicles(selectedOption.target.value, this.props.destination);
     }
     handleChange (slectedOption) {
         let selected = this.props.planets.find((planet)=> {
             return(planet.name === slectedOption.target.value)
         })
+        this.selectedPlanet = selected.name;
         selected.selectedBy = this.props.destination;
         this.props.planetSelected(selected);
     }
@@ -53,18 +55,10 @@ class PlanetDropDown extends React.Component {
                     })
                 }
             </select>
-            <div className = "radioDiv">
+            <div className = {this.selectedPlanet!==undefined? "radioDiv" : "hideDiv"}>
                 {
-                // this.props.vehicles.map((vehicle, index) =>{
-                //     return (
-                //         <div key = {"myVehicleDiv" + index}>   
-                //         <input disabled = {vehicle.total_no === 0} type="radio" id={vehicle.name+this.props.destination} name= {"vehicle"+ this.props.destination} value={vehicle.name} onChange = {this.vehicleChange}/> 
-                //         <label>{vehicle.name + "(" + vehicle.total_no + ")"}</label> <br/>
-                //         </div>
-                //     )
-                // })
-                this.getRadios()
-             
+                    
+                    this.getRadios()            
                 }
             </div>
             </div>
